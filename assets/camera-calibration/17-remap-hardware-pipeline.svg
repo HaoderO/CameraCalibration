@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">remap硬件S0至S4流水线与行缓冲</title>
+  <desc id="desc">展示输出像素坐标经过网格定位、坐标插值、源地址生成和像素插值，最终输出矫正像素的硬件数据流。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#111827"/></marker>
+    <marker id="blueArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#2563EB"/></marker>
+    <style>
+      text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#111827}
+      .title{font-size:32px;font-weight:700}.sub{font-size:24px;fill:#4B5563}.stage{fill:#fff;stroke:#111827;stroke-width:3}
+      .stage-title{font-size:25px;font-weight:700}.body{font-size:24px}.small{font-size:24px;fill:#4B5563}
+      .coord{fill:none;stroke:#111827;stroke-width:4;marker-end:url(#arrow)}.pixel{fill:none;stroke:#2563EB;stroke-width:4;marker-end:url(#blueArrow)}
+      .mem{fill:#EFF6FF;stroke:#2563EB;stroke-width:3}.buffer{fill:#F9FAFB;stroke:#111827;stroke-width:3}.accent{fill:#FFF7ED;stroke:#F59E0B;stroke-width:3}
+    </style>
+  </defs>
+  <rect width="1200" height="820" fill="#fff"/>
+  <text x="55" y="60" class="title">把 remap 变成硬件流水线：每拍推进一个像素</text>
+  <text x="55" y="94" class="sub">黑线传递坐标，蓝线传递图像像素；S3–S4 用行缓冲避免重复读取外部存储器。</text>
+
+  <rect x="35" y="150" width="150" height="210" rx="16" class="stage"/>
+  <text x="110" y="195" text-anchor="middle" class="stage-title">S0</text><text x="110" y="230" text-anchor="middle" class="body">坐标生成</text>
+  <text x="110" y="264" text-anchor="middle" class="small">输出 (x,y)</text><text x="110" y="292" text-anchor="middle" class="small"><tspan x="110" y="292">网格索引</tspan><tspan x="110" y="320">ix, iy</tspan></text><text x="110" y="348" text-anchor="middle" class="small">权重 α,β</text>
+
+  <path d="M185 255H225" class="coord"/>
+  <rect x="225" y="150" width="170" height="210" rx="16" class="stage"/>
+  <text x="310" y="195" text-anchor="middle" class="stage-title">S1</text><text x="310" y="230" text-anchor="middle" class="body">Mesh 查表</text>
+  <text x="310" y="258" text-anchor="middle" class="small"><tspan x="310" y="258">并行读取</tspan><tspan x="310" y="286">四个节点</tspan></text><text x="310" y="314" text-anchor="middle" class="small">(u00,v00)…</text><text x="310" y="342" text-anchor="middle" class="small">(u11,v11)</text>
+  <rect x="240" y="388" width="140" height="82" rx="12" class="mem"/><text x="310" y="422" text-anchor="middle" class="body">Mesh RAM</text><text x="310" y="450" text-anchor="middle" class="small">映射节点</text>
+  <path d="M310 388V360" class="coord"/>
+
+  <path d="M395 255H435" class="coord"/>
+  <rect x="435" y="150" width="170" height="210" rx="16" class="stage"/>
+  <text x="520" y="195" text-anchor="middle" class="stage-title">S2</text><text x="520" y="230" text-anchor="middle" class="body">坐标插值</text>
+  <text x="520" y="272" text-anchor="middle" class="small">双线性插值</text><text x="520" y="300" text-anchor="middle" class="small">得到源坐标</text><text x="520" y="328" text-anchor="middle" class="small">(u,v) 亚像素</text>
+
+  <path d="M605 255H645" class="coord"/>
+  <rect x="645" y="150" width="170" height="210" rx="16" class="stage"/>
+  <text x="730" y="195" text-anchor="middle" class="stage-title">S3</text><text x="730" y="230" text-anchor="middle" class="body">源地址生成</text>
+  <text x="730" y="260" text-anchor="middle" class="small"><tspan x="730" y="260">整数地址</tspan><tspan x="730" y="282">u0, v0</tspan></text><text x="730" y="306" text-anchor="middle" class="small"><tspan x="730" y="306">小数权重</tspan><tspan x="730" y="328">du, dv</tspan></text><text x="730" y="350" text-anchor="middle" class="small">定位 2×2 邻域</text>
+
+  <path d="M815 255H855" class="coord"/>
+  <rect x="855" y="150" width="170" height="210" rx="16" class="stage"/>
+  <text x="940" y="195" text-anchor="middle" class="stage-title">S4</text><text x="940" y="230" text-anchor="middle" class="body">像素插值</text>
+  <text x="940" y="258" text-anchor="middle" class="small"><tspan x="940" y="258">读取四像素</tspan><tspan x="940" y="286">P00…P11</tspan></text><text x="940" y="314" text-anchor="middle" class="small">按 du,dv 加权</text><text x="940" y="342" text-anchor="middle" class="small">生成矫正像素</text>
+  <path d="M1025 255H1110" class="pixel"/><circle cx="1135" cy="255" r="24" fill="#F0FDF4" stroke="#16A34A" stroke-width="3"/><text x="1135" y="263" text-anchor="middle" class="body">P'</text>
+
+  <rect x="645" y="515" width="380" height="175" rx="18" class="buffer"/>
+  <text x="835" y="556" text-anchor="middle" class="stage-title">行缓冲：让相邻像素留在芯片内部</text>
+  <rect x="680" y="585" width="140" height="58" rx="8" class="mem"/><text x="750" y="622" text-anchor="middle" class="body">上一行像素</text>
+  <rect x="850" y="585" width="140" height="58" rx="8" class="mem"/><text x="920" y="622" text-anchor="middle" class="body">当前行像素</text>
+  <path d="M730 515V360" class="pixel"/><path d="M940 515V360" class="pixel"/>
+  <rect x="65" y="500" width="455" height="190" rx="16" class="accent"/>
+  <text x="92" y="540" class="stage-title">为什么分成五级？</text>
+  <text x="92" y="578" class="body"><tspan x="92" y="578">各级只做固定的小段计算，</tspan><tspan x="92" y="608">寄存器隔开关键路径。</tspan></text>
+  <text x="92" y="644" class="body"><tspan x="92" y="644">流水线填满后实现“一拍输入、</tspan><tspan x="92" y="674">一拍输出”。</tspan></text>
+  <text x="55" y="775" class="small">外部存储器只需按流读取；2×2 邻域由片上行缓冲与移位寄存器拼出。</text>
+</svg>

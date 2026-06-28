@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">棋盘格标定约束原理</title>
+  <desc id="desc">展示内角点、已知方格尺寸、行列索引与平面约束Z等于零。</desc>
+  <defs><pattern id="board" width="60" height="60" patternUnits="userSpaceOnUse"><rect width="60" height="60" fill="#FFFFFF"/><rect width="30" height="30" fill="#111827"/><rect x="30" y="30" width="30" height="30" fill="#111827"/></pattern><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0L10 3 0 6Z" fill="#111827"/></marker></defs>
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+  <g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" fill="#111827">
+    <text x="600" y="55" text-anchor="middle" font-size="32" font-weight="700">棋盘格把已知平面点与图像角点对应起来</text>
+    <rect x="70" y="125" width="480" height="420" fill="url(#board)" stroke="#111827" stroke-width="3"/>
+    <g fill="#F59E0B" stroke="#111827" stroke-width="2">
+      <circle cx="130" cy="185" r="7"/><circle cx="190" cy="185" r="7"/><circle cx="250" cy="185" r="7"/><circle cx="310" cy="185" r="7"/><circle cx="370" cy="185" r="7"/><circle cx="430" cy="185" r="7"/><circle cx="490" cy="185" r="7"/>
+      <circle cx="130" cy="245" r="7"/><circle cx="190" cy="245" r="7"/><circle cx="250" cy="245" r="7"/><circle cx="310" cy="245" r="7"/><circle cx="370" cy="245" r="7"/><circle cx="430" cy="245" r="7"/><circle cx="490" cy="245" r="7"/>
+      <circle cx="130" cy="305" r="7"/><circle cx="190" cy="305" r="7"/><circle cx="250" cy="305" r="7"/><circle cx="310" cy="305" r="7"/><circle cx="370" cy="305" r="7"/><circle cx="430" cy="305" r="7"/><circle cx="490" cy="305" r="7"/>
+      <circle cx="130" cy="365" r="7"/><circle cx="190" cy="365" r="7"/><circle cx="250" cy="365" r="7"/><circle cx="310" cy="365" r="7"/><circle cx="370" cy="365" r="7"/><circle cx="430" cy="365" r="7"/><circle cx="490" cy="365" r="7"/>
+      <circle cx="130" cy="425" r="7"/><circle cx="190" cy="425" r="7"/><circle cx="250" cy="425" r="7"/><circle cx="310" cy="425" r="7"/><circle cx="370" cy="425" r="7"/><circle cx="430" cy="425" r="7"/><circle cx="490" cy="425" r="7"/>
+      <circle cx="130" cy="485" r="7"/><circle cx="190" cy="485" r="7"/><circle cx="250" cy="485" r="7"/><circle cx="310" cy="485" r="7"/><circle cx="370" cy="485" r="7"/><circle cx="430" cy="485" r="7"/><circle cx="490" cy="485" r="7"/>
+    </g>
+    <path d="M130 585H190" stroke="#111827" stroke-width="3" marker-end="url(#arrow)"/><text x="160" y="625" text-anchor="middle" font-size="24">方格边长 s（已知）</text>
+    <path d="M130 585H70" stroke="#111827" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="645" y="135" width="480" height="390" rx="18" fill="#FFFFFF" stroke="#111827" stroke-width="3"/>
+    <text x="685" y="190" font-size="26" font-weight="700">平面世界坐标</text>
+    <text x="685" y="245" font-size="26">角点索引：(i, j)</text><text x="685" y="295" font-size="26">X = i · s</text><text x="685" y="345" font-size="26">Y = j · s</text>
+    <rect x="680" y="380" width="400" height="80" rx="12" fill="#FFFFFF" stroke="#16A34A" stroke-width="3"/>
+    <text x="880" y="432" text-anchor="middle" font-size="30" font-weight="700" fill="#16A34A">平面约束：Z = 0</text>
+    <text x="885" y="580" text-anchor="middle" font-size="24">橙色圆点：检测到的内角点</text>
+    <text x="885" y="625" text-anchor="middle" font-size="24" fill="#2563EB">多幅不同姿态 → 求解相机参数</text>
+  </g>
+</svg>

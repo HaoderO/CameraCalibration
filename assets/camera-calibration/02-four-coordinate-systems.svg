@@ -1,0 +1,39 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">四个坐标系的转换</title>
+  <desc id="desc">世界坐标系经过外参、透视除法和内参，依次转换为相机、图像和像素坐标系。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#111827"/></marker>
+    <style>.t{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#111827}.box{fill:#fff;stroke:#111827;stroke-width:3}.axis{stroke:#111827;stroke-width:3;fill:none}.flow{stroke:#111827;stroke-width:3;fill:none;marker-end:url(#arrow)}.grid{stroke:#D1D5DB;stroke-width:2}</style>
+  </defs>
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+  <text class="t" x="600" y="55" text-anchor="middle" font-size="32" font-weight="700">从三维世界到二维像素</text>
+  <g transform="translate(35 120)">
+    <rect class="box" width="250" height="430" rx="16"/><circle cx="34" cy="34" r="22" fill="#F59E0B"/><text class="t" x="34" y="43" text-anchor="middle" font-size="24" font-weight="700">1</text>
+    <text class="t" x="125" y="85" text-anchor="middle" font-size="28" font-weight="700">世界坐标系</text>
+    <path class="axis" d="M65 320V160M65 320H205M65 320L145 375"/><text class="t" x="45" y="160" font-size="24">Yw</text><text class="t" x="190" y="350" font-size="24">Xw</text><text class="t" x="150" y="402" font-size="24">Zw</text>
+    <circle cx="160" cy="190" r="8" fill="#2563EB" stroke="#111827" stroke-width="2"/><text class="t" x="174" y="180" font-size="24">Pw</text>
+  </g>
+  <g transform="translate(335 120)">
+    <rect class="box" width="250" height="430" rx="16"/><circle cx="34" cy="34" r="22" fill="#F59E0B"/><text class="t" x="34" y="43" text-anchor="middle" font-size="24" font-weight="700">2</text>
+    <text class="t" x="125" y="85" text-anchor="middle" font-size="28" font-weight="700">相机坐标系</text>
+    <path class="axis" d="M125 315V165M125 315H215M125 315L65 375"/><text class="t" x="102" y="160" font-size="24">Yc</text><text class="t" x="210" y="345" font-size="24">Xc</text><text class="t" x="35" y="400" font-size="24">Zc</text>
+    <path d="M100 315L125 280L150 315Z" fill="#fff" stroke="#111827" stroke-width="3"/><circle cx="175" cy="210" r="8" fill="#2563EB" stroke="#111827" stroke-width="2"/>
+  </g>
+  <g transform="translate(635 120)">
+    <rect class="box" width="250" height="430" rx="16"/><circle cx="34" cy="34" r="22" fill="#F59E0B"/><text class="t" x="34" y="43" text-anchor="middle" font-size="24" font-weight="700">3</text>
+    <text class="t" x="125" y="85" text-anchor="middle" font-size="28" font-weight="700">图像坐标系</text>
+    <rect x="48" y="140" width="154" height="220" fill="#fff" stroke="#111827" stroke-width="3"/>
+    <path class="axis" d="M125 250V165M125 250H185"/><text class="t" x="105" y="170" font-size="24">y</text><text class="t" x="180" y="280" font-size="24">x</text>
+    <circle cx="170" cy="195" r="8" fill="#2563EB" stroke="#111827" stroke-width="2"/>
+  </g>
+  <g transform="translate(935 120)">
+    <rect class="box" width="230" height="430" rx="16"/><circle cx="34" cy="34" r="22" fill="#F59E0B"/><text class="t" x="34" y="43" text-anchor="middle" font-size="24" font-weight="700">4</text>
+    <text class="t" x="115" y="85" text-anchor="middle" font-size="28" font-weight="700">像素坐标系</text>
+    <g transform="translate(37 140)"><path class="grid" d="M0 0H160V220H0ZM40 0V220M80 0V220M120 0V220M0 44H160M0 88H160M0 132H160M0 176H160"/><path class="axis" d="M0 0H160M0 0V220"/><circle cx="120" cy="88" r="9" fill="#F59E0B" stroke="#111827" stroke-width="2"/><text class="t" x="126" y="122" font-size="24">(u,v)</text></g>
+  </g>
+  <path class="flow" d="M285 335H330"/><text class="t" x="308" y="305" text-anchor="middle" font-size="26" font-weight="700">[R|t]</text>
+  <path class="flow" d="M585 335H630"/><text class="t" x="608" y="285" text-anchor="middle" font-size="24" font-weight="700">透视除法</text>
+  <path class="flow" d="M885 335H930"/><text class="t" x="908" y="305" text-anchor="middle" font-size="28" font-weight="700">K</text>
+  <text class="t" x="600" y="625" text-anchor="middle" font-size="26">三维点 Pw → 相机中的 Pc → 成像平面 (x,y) → 像素 (u,v)</text>
+</svg>
+

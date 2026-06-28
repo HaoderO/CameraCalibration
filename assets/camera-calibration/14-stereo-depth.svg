@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">双目视差与深度</title>
+  <desc id="desc">两个相机由基线 B 分开，同一空间点形成左右像点，视差决定深度 Z 等于 fB 除以 d。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0L9 3L0 6Z" fill="#111827"/></marker></defs>
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+  <g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" fill="#111827">
+    <text x="600" y="55" text-anchor="middle" font-size="32" font-weight="700">双目几何：视差越大，物体越近</text>
+    <circle cx="600" cy="130" r="12" fill="#F59E0B" stroke="#111827" stroke-width="2"/><text x="625" y="125" font-size="25">空间点 P(X,Y,Z)</text>
+    <path d="M600 142L300 540M600 142L850 540" stroke="#2563EB" stroke-width="3"/>
+    <path d="M300 540V250M850 540V250" stroke="#111827" stroke-width="3"/>
+    <path d="M220 350H500M650 350H930" stroke="#111827" stroke-width="5"/>
+    <circle cx="439" cy="350" r="9" fill="#F59E0B" stroke="#111827" stroke-width="2"/><circle cx="734" cy="350" r="9" fill="#F59E0B" stroke="#111827" stroke-width="2"/>
+    <text x="439" y="320" text-anchor="middle" font-size="24">左像点 xL</text><text x="734" y="320" text-anchor="middle" font-size="24">右像点 xR</text>
+    <g stroke="#111827" stroke-width="3" fill="#FFFFFF"><path d="M245 590L300 540L355 590Z"/><path d="M795 590L850 540L905 590Z"/></g>
+    <text x="300" y="625" text-anchor="middle" font-size="25">左相机 Cₗ</text><text x="850" y="625" text-anchor="middle" font-size="25">右相机 Cᵣ</text>
+    <path d="M315 655H835" stroke="#111827" stroke-width="3" marker-end="url(#arrow)"/><text x="575" y="685" text-anchor="middle" font-size="25">基线 B</text>
+    <path d="M265 540V350" stroke="#111827" stroke-width="2" stroke-dasharray="8 6"/><path d="M815 540V350" stroke="#111827" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="230" y="455" font-size="24">焦距 f</text>
+    <rect x="930" y="430" width="240" height="145" rx="16" fill="#FFFFFF" stroke="#111827" stroke-width="3"/>
+    <text x="1050" y="477" text-anchor="middle" font-size="25">视差</text><text x="1050" y="516" text-anchor="middle" font-size="27">d = xL − xR</text><text x="1050" y="558" text-anchor="middle" font-size="30" fill="#16A34A">Z = fB / d</text>
+  </g>
+</svg>

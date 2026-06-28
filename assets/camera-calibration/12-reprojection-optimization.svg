@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">重投影误差优化</title>
+  <desc id="desc">展示观测角点、模型投影角点、残差向量、平方和目标函数以及迭代降误差过程。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0L9 3L0 6Z" fill="#111827"/></marker><marker id="redArrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0L9 3L0 6Z" fill="#DC2626"/></marker></defs>
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+  <g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" fill="#111827">
+    <text x="600" y="55" text-anchor="middle" font-size="32" font-weight="700">重投影误差：让预测角点靠近观测角点</text>
+    <rect x="55" y="105" width="600" height="465" fill="#FFFFFF" stroke="#111827" stroke-width="3"/>
+    <g stroke="#D1D5DB" stroke-width="2"><path d="M155 105V570M255 105V570M355 105V570M455 105V570M555 105V570"/><path d="M55 205H655M55 305H655M55 405H655M55 505H655"/></g>
+    <g fill="#F59E0B" stroke="#111827" stroke-width="2"><circle cx="180" cy="185" r="10"/><circle cx="330" cy="280" r="10"/><circle cx="520" cy="430" r="10"/></g>
+    <g stroke="#2563EB" stroke-width="4"><path d="M142 238l20 20m0-20l-20 20"/><path d="M285 322l20 20m0-20l-20 20"/><path d="M475 470l20 20m0-20l-20 20"/></g>
+    <g stroke="#DC2626" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#redArrow)"><path d="M151 247L174 191"/><path d="M294 331L324 287"/><path d="M484 479L514 437"/></g>
+    <text x="95" y="610" font-size="24"><tspan fill="#F59E0B">●</tspan> 观测角点 p　<tspan fill="#2563EB">×</tspan> 投影角点 p̂　<tspan fill="#DC2626">虚线</tspan> 残差 r = p − p̂</text>
+    <rect x="720" y="120" width="420" height="130" rx="14" fill="#FFFFFF" stroke="#111827" stroke-width="3"/>
+    <text x="930" y="170" text-anchor="middle" font-size="25">目标函数</text><text x="930" y="220" text-anchor="middle" font-size="28">E(θ) = Σᵢ ‖pᵢ − p̂ᵢ(θ)‖²</text>
+    <g stroke="#111827" stroke-width="3" fill="#FFFFFF"><rect x="770" y="330" width="320" height="80" rx="14"/><rect x="770" y="500" width="320" height="80" rx="14"/></g>
+    <text x="930" y="380" text-anchor="middle" font-size="25">更新参数 θ：K、畸变、R/t</text>
+    <text x="930" y="548" text-anchor="middle" font-size="25" fill="#16A34A">总误差降低 → 继续迭代</text>
+    <path d="M930 250V320" stroke="#111827" stroke-width="3" marker-end="url(#arrow)"/><path d="M930 410V490" stroke="#111827" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M1090 540H1150V185H1148" fill="none" stroke="#111827" stroke-width="3" marker-end="url(#arrow)"/>
+  </g>
+</svg>

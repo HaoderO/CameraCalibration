@@ -1,0 +1,33 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">齐次坐标统一仿射变换</title>
+  <desc id="desc">左侧对比分开的乘法和加法，右侧展示附加坐标一后使用单个四乘四矩阵完成旋转、缩放和平移。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#111827"/></marker>
+    <style>.t{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#111827}.main{stroke:#111827;stroke-width:3;fill:none}.flow{stroke:#111827;stroke-width:3;fill:none;marker-end:url(#arrow)}.card{fill:#fff;stroke:#111827;stroke-width:3}</style>
+  </defs>
+  <rect width="1200" height="700" fill="#FFFFFF"/><text class="t" x="600" y="55" text-anchor="middle" font-size="32" font-weight="700">齐次坐标：用一次矩阵乘法统一仿射变换</text>
+  <rect class="card" x="45" y="110" width="470" height="500" rx="18"/><text class="t" x="280" y="160" text-anchor="middle" font-size="29" font-weight="700">普通坐标：两种运算</text>
+  <rect class="card" x="105" y="215" width="350" height="105" rx="12"/><text class="t" x="280" y="260" text-anchor="middle" font-size="27">旋转 / 缩放用乘法</text><text class="t" x="280" y="300" text-anchor="middle" font-size="28" font-weight="700">p₁ = R · p</text>
+  <text class="t" x="280" y="365" text-anchor="middle" font-size="34" font-weight="700">＋</text>
+  <rect class="card" x="105" y="405" width="350" height="105" rx="12"/><text class="t" x="280" y="450" text-anchor="middle" font-size="27">平移用加法</text><text class="t" x="280" y="492" text-anchor="middle" font-size="28" font-weight="700">p′ = p₁ + t</text>
+  <text class="t" x="280" y="565" text-anchor="middle" font-size="24">操作分开，组合推导较繁琐</text>
+  <path class="flow" d="M525 360H625"/><text class="t" x="575" y="335" text-anchor="middle" font-size="24">附加一维</text>
+  <rect class="card" x="635" y="110" width="520" height="500" rx="18"/><text class="t" x="895" y="160" text-anchor="middle" font-size="29" font-weight="700">齐次坐标：一次 4×4 乘法</text>
+  <g class="t" font-size="25">
+    <text x="665" y="270">p̃′ =</text>
+    <path class="main" d="M735 190H718V390H735M1005 190H1022V390H1005"/>
+    <text x="755" y="235">R₁₁</text><text x="820" y="235">R₁₂</text><text x="885" y="235">R₁₃</text><text x="955" y="235" fill="#2563EB" font-weight="700">tx</text>
+    <text x="755" y="285">R₂₁</text><text x="820" y="285">R₂₂</text><text x="885" y="285">R₂₃</text><text x="955" y="285" fill="#2563EB" font-weight="700">ty</text>
+    <text x="755" y="335">R₃₁</text><text x="820" y="335">R₃₂</text><text x="885" y="335">R₃₃</text><text x="955" y="335" fill="#2563EB" font-weight="700">tz</text>
+    <text x="755" y="385">0</text><text x="820" y="385">0</text><text x="885" y="385">0</text><text x="955" y="385" fill="#F59E0B" font-weight="700">1</text>
+    <text x="1035" y="290">·</text>
+    <path class="main" d="M1080 190H1065V390H1080M1135 190H1150V390H1135"/>
+    <text x="1105" y="235">x</text><text x="1105" y="285">y</text><text x="1105" y="335">z</text>
+    <rect x="1082" y="350" width="48" height="38" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/><text x="1105" y="380" text-anchor="middle" font-weight="700">1</text>
+  </g>
+  <text class="t" x="895" y="430" text-anchor="middle" font-size="28" font-weight="700">p̃ = (x, y, z, 1)ᵀ</text>
+  <text class="t" x="895" y="478" text-anchor="middle" font-size="24">最后一列承载平移 t</text>
+  <text class="t" x="895" y="520" text-anchor="middle" font-size="24">右下角的 1 保持仿射结构</text>
+  <rect x="770" y="548" width="250" height="42" rx="21" fill="#FEF3C7" stroke="#111827" stroke-width="2"/><text class="t" x="895" y="577" text-anchor="middle" font-size="24" font-weight="700">旋转 · 缩放 · 平移</text>
+</svg>
+

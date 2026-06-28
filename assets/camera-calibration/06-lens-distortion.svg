@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">正常网格与镜头畸变对比</title>
+  <desc id="desc">用相同控制点对比正常、桶形畸变和枕形畸变。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L10,3 L0,6 Z" fill="#111827"/></marker>
+    <pattern id="grid" width="55" height="55" patternUnits="userSpaceOnUse"><path d="M55 0H0V55" fill="none" stroke="#111827" stroke-width="2"/></pattern>
+  </defs>
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+  <text x="600" y="55" text-anchor="middle" font-size="32" font-weight="700" fill="#111827" font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif">镜头畸变：直线如何弯曲</text>
+  <g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="26" fill="#111827" text-anchor="middle">
+    <text x="210" y="120">正常</text><text x="600" y="120">桶形畸变（向外鼓）</text><text x="990" y="120">枕形畸变（向内收）</text>
+  </g>
+  <rect x="55" y="155" width="310" height="390" fill="url(#grid)" stroke="#111827" stroke-width="3"/>
+  <g fill="none" stroke="#DC2626" stroke-width="3">
+    <path d="M445 155 Q600 195 755 155 M425 253 Q600 275 775 253 M415 350 Q600 350 785 350 M425 448 Q600 425 775 448 M445 545 Q600 505 755 545"/>
+    <path d="M445 155 Q485 350 445 545 M523 175 Q545 350 523 525 M600 185V515 M677 175 Q655 350 677 525 M755 155 Q715 350 755 545"/>
+    <path d="M835 155 Q990 115 1145 155 M855 253 Q990 230 1125 253 M865 350 Q990 350 1115 350 M855 448 Q990 470 1125 448 M835 545 Q990 585 1145 545"/>
+    <path d="M835 155 Q795 350 835 545 M913 135 Q890 350 913 565 M990 125V575 M1067 135 Q1090 350 1067 565 M1145 155 Q1185 350 1145 545"/>
+  </g>
+  <g fill="#F59E0B" stroke="#111827" stroke-width="2">
+    <circle cx="210" cy="350" r="7"/><circle cx="600" cy="350" r="7"/><circle cx="990" cy="350" r="7"/>
+  </g>
+  <g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" font-size="24" fill="#111827" text-anchor="middle">
+    <text x="210" y="605">直线保持笔直</text><text x="600" y="605">中心放大，边缘压缩</text><text x="990" y="605">中心压缩，边缘拉伸</text>
+    <text x="600" y="655" fill="#DC2626">红色曲线表示畸变后的网格线；橙点为相同中心控制点</text>
+  </g>
+</svg>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Screen Ruler Help Info</title>
+<style type="text/css">
+.content {
+	float: left;
+	width: 130px;
+	background-color: #FFF6F9;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 10px;
+	padding-top: 10px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	border: 1px solid #CCC;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+}
+.text {
+	padding-top: 10px;
+	padding-right: 150px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	margin-left: 160px;
+	background-color: #FFF;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.bgr {
+	background-color: #FFF;
+	margin: 0px;
+	padding: 0px;
+}
+.bgr .content ul li  {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: square;
+}
+.bgr .content ul {
+	margin: 0px;
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 20px;
+}
+</style>
+</head>
+
+<body>
+<div class="bgr">
+  <div class="content">
+    <p><a href="_help.html">Overview</a></p>
+    <p><a href="_shortcuts.html">Hidden Keys</a></p>
+    <p>Settings:</p>
+    <ul>
+      <li><a href="_calibrate.html">Calibration</a></li>
+      <li><a href="_units.html"> Units</a></li>
+      <li><a href="_setting_shortcuts.html">Shortcuts</a></li>
+      <li><a href="_activation.html">Activation</a></li>
+    </ul>
+    <p>Using the tool:</p>
+    <ul>
+      <li><a href="_pixel.html">A pixel tale</a></li>
+      <li><a href="_flying_figure.html">Flying Figures</a></li>
+      <li><a href="_guides.html">Guides<br />
+        <br />
+      </a>  </li>
+    </ul>
+  </div>
+  <div class="text" style="font-family: Helvetica, Arial, sans-serif;"><strong>Screen Ruler  
+    Help 
+</strong>
+    <h3>A pixel tale</h3>
+<h4>Precision and calculations</h4>
+    <p>The only &quot;precise&quot; metrix when it comes to computer screens is the so called &quot;pixel&quot;. We know that there are, for example, 165 pixels horizontally and 1050 pixels vertically. When we know the horizontal and vertical size (as with the Screen Ruler itself) in pixels, we can say for sure that we will get precise readings in pixel. If the width of the ruler is 100 px and the height is 100 px, we know for sure that our ruler perimeter is 400 and the area is 10,000 square pixels. That's the best precision we can get from a display. But what happens if we rotate our ruler (as the inner ruler or any other rotated figure)? Well, then we know nothing. When we are measuring the length of a rotated line everything is calculated and rounded. There are no &quot;diagonal&quot; pixels. To get the length of a rotated line we calculate it with the pythagorean theorem, then we round the result (because there is no such thing as &quot;half a pixel&quot;) and write the calculated and rounded number of pixels on screen. You get the idea. It is still precise at some level (because the pythagorean theorem doesn't lie) but one can never be sure what will happen after many such calculations.</p>
+    <p>Now, let's  convert the length in pixels (even before the rounding) into inches. What is the number of pixels per inch? Is the pixel square? (Remember the calibration issue?) What is the rotation angle? Again: calculations. What precision we are looking for? How many digits after the decimal point? Going this way could lead to a headache(which was my status quo when I was writing the respective code for all those calculations). </p>
+    <p>To minimize the errors, I am performing all calculations in real numbers (any rounding is done just before writing values on screen). But I just cannot promise you <em>the </em>absolute precision. Noone can. There could be pixel more, or pixel less in some situations so, please, do not expect laser-instruments precision from this tool.</p>
+    <h4>The forgotten pixel</h4>
+<p>There is another  important note to be taken into account. The &quot;zero&quot; pixel. When you look at the Start Point menu (which controls the orientation of the tickers at top/left/bottom/right), you will see that you have 2 &quot;strange&quot; options: Ruler starts from 0 and Ruler starts from 1. By default the ruler starts with 0 (zero). In other words, the very first pixel of the ruler is pixel number 0. Although  numbered as &quot;0&quot;,  it is real and existing pixel when it comes to the width of the ruler box. That may confuse you in some moment. If you don't see what I mean, do this:</p>
+<p>1) Drag a guide from the left side of the ruler and position it right over the 400px line of the top/bottom ticker<br />
+  2) click &quot;Tools / Set Position&quot; and set the width of the ruler to 400px<br />
+  3) hide all tickers and hide the border too (see the View menu)</p>
+<p>Do you see the problem? The guide disappeared. Click Shift+Right Arrow keys (that will make the ruler 1 pixel wider). The ticker says &quot;200&quot;, The guide says &quot;200&quot; but the actual width of the ruler is 201. </p>
+<p>If select &quot;Ruler starts with 1&quot; from the Start Point menu, there will be no zero-pixel on the tickers anymore, therefore the ticker lines and the ruler size should match. However, this could be strange. For that reason I am measuring only with figures (usually rectangle), knowing that each time it includes everything, including the left/right lines</p>
+</div>
+</div>
+</body>
+</html>

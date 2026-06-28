@@ -1,0 +1,19 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">相机内参矩阵</title>
+  <desc id="desc">中央为三乘三内参矩阵，左右引线分别连接焦距示意和传感器主点网格。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#111827"/></marker>
+    <style>.t{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#111827}.main{stroke:#111827;stroke-width:3;fill:none}.help{stroke:#2563EB;stroke-width:2;fill:none}.grid{stroke:#D1D5DB;stroke-width:2}</style>
+  </defs>
+  <rect width="1200" height="700" fill="#FFFFFF"/><text class="t" x="600" y="55" text-anchor="middle" font-size="32" font-weight="700">内参矩阵 K：把成像坐标换成像素坐标</text>
+  <text class="t" x="600" y="145" text-anchor="middle" font-size="30" font-weight="700">K =</text>
+  <path class="main" d="M500 100H475V350H500M700 100H725V350H700"/>
+  <g class="t" font-size="34" text-anchor="middle"><text x="525" y="165" fill="#2563EB" font-weight="700">fx</text><text x="600" y="165">0</text><text x="675" y="165" fill="#F59E0B" font-weight="700">cx</text><text x="525" y="240">0</text><text x="600" y="240" fill="#2563EB" font-weight="700">fy</text><text x="675" y="240" fill="#F59E0B" font-weight="700">cy</text><text x="525" y="315">0</text><text x="600" y="315">0</text><text x="675" y="315">1</text></g>
+  <rect x="60" y="420" width="460" height="225" rx="16" fill="#fff" stroke="#111827" stroke-width="3"/><text class="t" x="290" y="460" text-anchor="middle" font-size="28" font-weight="700">fx / fy：水平与垂直焦距</text>
+  <line class="main" x1="150" y1="575" x2="410" y2="575"/><circle cx="210" cy="575" r="8" fill="#F59E0B" stroke="#111827" stroke-width="2"/><line class="help" x1="210" y1="575" x2="410" y2="500"/><line class="main" x1="210" y1="615" x2="410" y2="615" marker-start="url(#arrow)" marker-end="url(#arrow)"/><text class="t" x="310" y="610" text-anchor="middle" font-size="24">焦距 f</text>
+  <path class="help" d="M545 170C390 220 320 340 290 415" marker-end="url(#arrow)"/><path class="help" d="M600 245C520 310 455 350 390 415" marker-end="url(#arrow)"/>
+  <rect x="680" y="420" width="460" height="225" rx="16" fill="#fff" stroke="#111827" stroke-width="3"/><text class="t" x="910" y="460" text-anchor="middle" font-size="28" font-weight="700">cx / cy：传感器上的主点</text>
+  <g transform="translate(775 485)"><path class="grid" d="M0 0H270V125H0ZM45 0V125M90 0V125M135 0V125M180 0V125M225 0V125M0 42H270M0 84H270"/><rect width="270" height="125" fill="none" stroke="#111827" stroke-width="3"/><circle cx="160" cy="70" r="10" fill="#F59E0B" stroke="#111827" stroke-width="2"/><text class="t" x="176" y="64" font-size="24">(cx, cy)</text></g>
+  <path class="help" d="M675 170C815 230 850 330 880 415" marker-end="url(#arrow)"/><path class="help" d="M675 245C930 265 980 330 990 415" marker-end="url(#arrow)"/>
+</svg>
+

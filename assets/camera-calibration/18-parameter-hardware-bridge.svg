@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">从标定参数到硬件寄存器的桥接流程</title>
+  <desc id="desc">展示相机内参和畸变参数如何在主机软件中生成映射、量化压缩并打包，再配置到硬件完成实时图像矫正。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#111827"/></marker>
+    <style>
+      text{font-family:"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;fill:#111827}
+      .title{font-size:32px;font-weight:700}.sub{font-size:24px;fill:#4B5563}.box{fill:#fff;stroke:#111827;stroke-width:3}
+      .host{fill:#F9FAFB;stroke:#D1D5DB;stroke-width:2}.hw{fill:#F8FAFC;stroke:#111827;stroke-width:3}
+      .head{font-size:25px;font-weight:700}.body{font-size:24px}.small{font-size:24px;fill:#4B5563}
+      .flow{fill:none;stroke:#111827;stroke-width:4;marker-end:url(#arrow)}.param{fill:#EFF6FF;stroke:#2563EB}.key{fill:#FFF7ED;stroke:#F59E0B}.ok{fill:#F0FDF4;stroke:#16A34A}
+      .boundary{stroke:#111827;stroke-width:3;stroke-dasharray:10 8}
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#fff"/>
+  <text x="55" y="60" class="title">标定结果怎样真正进入硬件？</text>
+  <text x="55" y="94" class="sub">参数不能直接“塞给 FPGA”：先在主机侧变成可查表、可定点计算的数据。</text>
+
+  <rect x="40" y="135" width="720" height="510" rx="20" class="host"/>
+  <text x="70" y="178" class="head">主机软件 / 离线准备</text>
+  <rect x="75" y="220" width="180" height="125" rx="14" class="box param"/>
+  <text x="165" y="260" text-anchor="middle" class="head">标定参数</text>
+  <text x="165" y="296" text-anchor="middle" class="body">K、dist</text><text x="165" y="325" text-anchor="middle" class="small">图像尺寸 / 模型</text>
+  <path d="M255 282H305" class="flow"/>
+  <rect x="305" y="220" width="190" height="125" rx="14" class="box"/>
+  <text x="400" y="260" text-anchor="middle" class="head">生成映射</text>
+  <text x="400" y="288" text-anchor="middle" class="body">initUndistort…</text><text x="400" y="316" text-anchor="middle" class="small"><tspan x="400" y="316">输出映射表</tspan><tspan x="400" y="340">map_x / map_y</tspan></text>
+  <path d="M495 282H545" class="flow"/>
+  <rect x="545" y="220" width="180" height="125" rx="14" class="box key"/>
+  <text x="635" y="260" text-anchor="middle" class="head">量化与压缩</text>
+  <text x="635" y="288" text-anchor="middle" class="body">浮点 → 定点</text><text x="635" y="312" text-anchor="middle" class="small"><tspan x="635" y="312">全图映射</tspan><tspan x="635" y="338">→ Mesh 节点</tspan></text>
+
+  <path d="M635 345V405" class="flow"/>
+  <rect x="500" y="395" width="225" height="165" rx="14" class="box"/>
+  <text x="612" y="445" text-anchor="middle" class="head">内存与寄存器打包</text>
+  <text x="612" y="477" text-anchor="middle" class="body"><tspan x="612" y="477">节点表</tspan><tspan x="612" y="503">→ RAM 镜像</tspan></text><text x="612" y="529" text-anchor="middle" class="small"><tspan x="612" y="529">尺寸、步长、格式</tspan><tspan x="612" y="553">→ CSR</tspan></text>
+  <path d="M500 472H420" class="flow"/>
+  <rect x="145" y="405" width="275" height="135" rx="14" class="box ok"/>
+  <text x="282" y="445" text-anchor="middle" class="head">软件参考验证</text>
+  <text x="282" y="481" text-anchor="middle" class="body">定点模型 vs OpenCV</text><text x="282" y="510" text-anchor="middle" class="small">误差通过后才下发</text>
+
+  <line x1="790" y1="135" x2="790" y2="645" class="boundary"/>
+  <text x="806" y="175" class="small">软件 / 硬件边界</text>
+  <path d="M282 540V675H1002V395" class="flow"/>
+
+  <rect x="845" y="220" width="315" height="420" rx="20" class="hw"/>
+  <text x="875" y="263" class="head">FPGA / ISP 实时处理</text>
+  <rect x="880" y="300" width="245" height="95" rx="12" class="box param"/>
+  <text x="1002" y="338" text-anchor="middle" class="head">配置接口</text><text x="1002" y="368" text-anchor="middle" class="small">寄存器 + Mesh RAM</text>
+  <path d="M1002 395V438" class="flow"/>
+  <rect x="880" y="438" width="245" height="95" rx="12" class="box"/>
+  <text x="1002" y="476" text-anchor="middle" class="head">remap 流水线</text><text x="1002" y="506" text-anchor="middle" class="small">坐标插值 + 像素插值</text>
+  <path d="M1002 533V568" class="flow"/>
+  <rect x="880" y="568" width="245" height="48" rx="12" class="box ok"/>
+  <text x="1002" y="600" text-anchor="middle" class="body">实时矫正图像流</text>
+  <text x="55" y="704" class="body">关键检查：定点位宽是否足够、Mesh 间距是否过大、边界像素如何处理，</text>
+  <text x="55" y="738" class="body">以及软件与硬件的坐标约定是否一致。</text>
+</svg>

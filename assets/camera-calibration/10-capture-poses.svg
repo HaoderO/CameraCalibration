@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">棋盘格标定图像采集姿态建议</title>
+  <desc id="desc">展示六种推荐覆盖姿态及模糊、过小、重复和裁角四种错误示例。</desc>
+  <defs><pattern id="mini" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="#FFFFFF"/><rect width="10" height="10" fill="#111827"/><rect x="10" y="10" width="10" height="10" fill="#111827"/></pattern><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0L10 3 0 6Z" fill="#111827"/></marker></defs>
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+  <g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" fill="#111827">
+    <text x="600" y="48" text-anchor="middle" font-size="32" font-weight="700">标定图像：覆盖位置、角度、距离与旋转</text>
+    <text x="55" y="93" font-size="26" font-weight="700" fill="#16A34A">✓ 推荐姿态（六类）</text>
+    <g stroke="#111827" stroke-width="3" fill="#FFFFFF">
+      <rect x="45" y="115" width="170" height="245"/><rect x="235" y="115" width="170" height="245"/><rect x="425" y="115" width="170" height="245"/><rect x="615" y="115" width="170" height="245"/><rect x="805" y="115" width="170" height="245"/><rect x="995" y="115" width="170" height="245"/>
+    </g>
+    <g fill="url(#mini)" stroke="#111827" stroke-width="2">
+      <rect x="80" y="165" width="100" height="140"/><rect x="245" y="150" width="105" height="145"/><rect x="480" y="170" width="105" height="145"/>
+      <rect x="645" y="185" width="75" height="100"/><rect x="835" y="145" width="120" height="165"/><rect x="1025" y="165" width="105" height="145"/>
+    </g>
+    <g fill="none" stroke="#2563EB" stroke-width="3"><path d="M255 145L370 170L345 310L240 285Z"/><path d="M625 175L735 145L760 295L640 315Z"/><path d="M1020 185L1110 145L1140 290L1035 320Z"/></g>
+    <g font-size="24" text-anchor="middle"><text x="130" y="345">中心</text><text x="320" y="345">靠左边缘</text><text x="510" y="345">靠右边缘</text><text x="700" y="345">远距离</text><text x="890" y="345">近距离</text><text x="1080" y="345">倾斜/旋转</text></g>
+    <path d="M40 390H1160" stroke="#D1D5DB" stroke-width="2"/>
+    <text x="55" y="435" font-size="26" font-weight="700" fill="#DC2626">✕ 避免采集</text>
+    <g stroke="#111827" stroke-width="3" fill="#FFFFFF"><rect x="55" y="460" width="250" height="170"/><rect x="335" y="460" width="250" height="170"/><rect x="615" y="460" width="250" height="170"/><rect x="895" y="460" width="250" height="170"/></g>
+    <g fill="url(#mini)" stroke="#111827" stroke-width="2"><rect x="105" y="485" width="145" height="90" opacity=".35"/><rect x="430" y="500" width="60" height="45"/><rect x="675" y="485" width="125" height="85"/><rect x="855" y="485" width="125" height="85"/><rect x="855" y="500" width="125" height="85"/><rect x="855" y="515" width="125" height="85"/><rect x="850" y="485" width="180" height="110"/></g>
+    <g stroke="#DC2626" stroke-width="5"><path d="M70 475L290 615M290 475L70 615M350 475L570 615M570 475L350 615M630 475L850 615M850 475L630 615M910 475L1130 615M1130 475L910 615"/></g>
+    <g font-size="24" text-anchor="middle"><text x="180" y="665">运动模糊</text><text x="460" y="665">棋盘过小</text><text x="740" y="665">姿态重复</text><text x="1020" y="665">角点被裁切</text></g>
+  </g>
+</svg>

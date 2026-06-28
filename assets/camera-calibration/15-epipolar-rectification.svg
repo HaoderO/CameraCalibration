@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">极线几何与立体校正</title>
+  <desc id="desc">校正前极线经过极点并倾斜，校正后左右图像的对应点位于同一条水平扫描线上。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0L9 3L0 6Z" fill="#111827"/></marker></defs>
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+  <g font-family="Microsoft YaHei, PingFang SC, Noto Sans CJK SC, sans-serif" fill="#111827">
+    <text x="600" y="55" text-anchor="middle" font-size="32" font-weight="700">极线校正：二维搜索变成同一行的一维搜索</text>
+    <text x="300" y="105" text-anchor="middle" font-size="28">校正前</text><text x="900" y="105" text-anchor="middle" font-size="28">校正后</text>
+    <line x1="600" y1="90" x2="600" y2="650" stroke="#D1D5DB" stroke-width="2"/>
+    <g fill="#FFFFFF" stroke="#111827" stroke-width="3"><rect x="45" y="140" width="240" height="400"/><rect x="315" y="140" width="240" height="400"/><rect x="645" y="140" width="240" height="400"/><rect x="915" y="140" width="240" height="400"/></g>
+    <g stroke="#2563EB" stroke-width="2"><path d="M65 470L270 190M65 470L270 260M65 470L270 330"/><path d="M540 470L335 190M540 470L335 260M540 470L335 330"/></g>
+    <circle cx="65" cy="470" r="8" fill="#DC2626"/><circle cx="540" cy="470" r="8" fill="#DC2626"/>
+    <text x="77" y="505" font-size="24">极点 eₗ</text><text x="425" y="505" font-size="24">极点 eᵣ</text>
+    <circle cx="180" cy="313" r="10" fill="#F59E0B" stroke="#111827" stroke-width="2"/><circle cx="430" cy="394" r="10" fill="#F59E0B" stroke="#111827" stroke-width="2"/>
+    <text x="300" y="585" text-anchor="middle" font-size="24">倾斜极线：对应点需沿线搜索</text>
+    <g stroke="#D1D5DB" stroke-width="2"><path d="M645 220H885M645 300H885M645 380H885M645 460H885"/><path d="M915 220H1155M915 300H1155M915 380H1155M915 460H1155"/></g>
+    <path d="M645 340H885M915 340H1155" stroke="#2563EB" stroke-width="4"/>
+    <circle cx="760" cy="340" r="10" fill="#F59E0B" stroke="#111827" stroke-width="2"/><circle cx="1035" cy="340" r="10" fill="#F59E0B" stroke="#111827" stroke-width="2"/>
+    <text x="900" y="585" text-anchor="middle" font-size="24" fill="#16A34A">同一行 yL = yR：只需水平匹配</text>
+    <path d="M565 350H625" stroke="#111827" stroke-width="3" marker-end="url(#arrow)"/><text x="595" y="325" text-anchor="middle" font-size="24">校正</text>
+    <text x="165" y="625" text-anchor="middle" font-size="24">左图</text><text x="435" y="625" text-anchor="middle" font-size="24">右图</text><text x="765" y="625" text-anchor="middle" font-size="24">左图</text><text x="1035" y="625" text-anchor="middle" font-size="24">右图</text>
+  </g>
+</svg>

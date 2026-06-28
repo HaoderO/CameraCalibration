@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>相机标定教程 · 插图风格对比</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f8fb;color:#172033;font-family:"Microsoft YaHei","PingFang SC",sans-serif}
+main{max-width:1240px;margin:auto;padding:34px}h1{margin:0 0 8px;font-size:28px}.sub{color:#637083;margin:0 0 26px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;border:2px solid #e4e9f0;border-radius:18px;overflow:hidden;box-shadow:0 8px 24px #25334d12;cursor:pointer;transition:.18s}
+.card:hover{transform:translateY(-3px);border-color:#7c93bd}.card.selected{border-color:#2563eb;box-shadow:0 10px 30px #2563eb2b}
+.preview{height:330px;padding:22px;display:flex;align-items:center;justify-content:center}.body{padding:19px 22px 22px;border-top:1px solid #edf0f5}.body h2{margin:0 0 8px;font-size:19px}.body p{margin:0;color:#647085;line-height:1.55;font-size:14px}
+.a .preview{background:#fbfaf7}.b .preview{background:#f3f7ff}.c .preview{background:#0e1728}.badge{display:inline-block;padding:4px 9px;border-radius:99px;font-size:12px;margin-bottom:11px;background:#eaf1ff;color:#255ec5}
+svg{width:100%;height:100%}.hint{text-align:center;margin-top:22px;color:#758096;font-size:14px}
+</style>
+</head>
+<body><main>
+<h1>整本教程采用哪一种视觉语言？</h1>
+<p class="sub">三张样稿表达同一个概念：世界中的点，如何经过相机投影落到图像平面。</p>
+<div class="grid">
+  <section class="card a" data-choice="A" onclick="pick(this)">
+    <div class="preview">
+      <svg viewBox="0 0 340 270">
+        <defs><marker id="aa" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#d86f45"/></marker></defs>
+        <rect x="218" y="52" width="10" height="170" rx="5" fill="#ead8bd"/>
+        <circle cx="130" cy="137" r="12" fill="#24344c"/><path d="M130 137 L219 89 M130 137 L219 189" stroke="#d86f45" stroke-width="3"/>
+        <path d="M78 80 L78 190 M78 80 L60 104 M78 80 L96 104" fill="none" stroke="#315e5b" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="78" cy="80" r="8" fill="#d8a43b"/>
+        <path d="M44 230 H120 M44 230 V168" stroke="#66788b" stroke-width="2" marker-end="url(#aa)"/>
+        <text x="235" y="48" font-size="14" fill="#526174">图像平面</text><text x="109" y="127" font-size="13" fill="#526174">光心</text>
+        <text x="49" y="252" font-size="13" fill="#526174">世界坐标</text>
+      </svg>
+    </div><div class="body"><span class="badge">A · 教科书手绘</span><h2>温暖、直观、像老师在白板上讲</h2><p>米白底、低饱和配色、轻手绘质感。适合零基础读者，亲和力最好。</p></div>
+  </section>
+  <section class="card b" data-choice="B" onclick="pick(this)">
+    <div class="preview">
+      <svg viewBox="0 0 340 270">
+        <defs><marker id="ab" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#2563eb"/></marker></defs>
+        <rect x="232" y="43" width="9" height="184" rx="4" fill="#8eb8ff"/>
+        <path d="M118 136 L234 78 M118 136 L234 195" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="7 5"/>
+        <path d="M96 119 L119 105 L142 119 L142 151 L119 166 L96 151Z" fill="#fff" stroke="#163d78" stroke-width="3"/><circle cx="119" cy="136" r="9" fill="#2563eb"/>
+        <g stroke="#30445e" stroke-width="3"><path d="M56 76 V193"/><path d="M56 76 L39 100"/><path d="M56 76 L73 100"/></g><circle cx="56" cy="76" r="7" fill="#f59e0b"/>
+        <g font-size="13" fill="#34445b"><text x="248" y="42">Sensor</text><text x="95" y="97">Camera</text><text x="27" y="216">P(X,Y,Z)</text></g>
+        <rect x="225" y="70" width="23" height="16" rx="4" fill="#f59e0b"/><rect x="225" y="187" width="23" height="16" rx="4" fill="#f59e0b"/>
+        <path d="M27 237 H92" stroke="#2563eb" stroke-width="2" marker-end="url(#ab)"/>
+      </svg>
+    </div><div class="body"><span class="badge">B · 现代技术信息图</span><h2>清晰、统一、工程感与亲和力平衡</h2><p>蓝色主线、橙色关键点、规则几何与统一图例。阅读效率最高，也最适合全书。</p></div>
+  </section>
+  <section class="card c" data-choice="C" onclick="pick(this)">
+    <div class="preview">
+      <svg viewBox="0 0 340 270">
+        <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <g stroke="#263954" stroke-width="1"><path d="M20 220 H320"/><path d="M20 180 H320"/><path d="M20 140 H320"/><path d="M20 100 H320"/><path d="M60 40 V240"/><path d="M110 40 V240"/><path d="M160 40 V240"/><path d="M210 40 V240"/><path d="M260 40 V240"/></g>
+        <rect x="244" y="49" width="5" height="174" fill="#18c7ff" filter="url(#glow)"/>
+        <circle cx="125" cy="137" r="10" fill="#07111f" stroke="#18c7ff" stroke-width="3" filter="url(#glow)"/>
+        <path d="M125 137 L246 80 M125 137 L246 196" stroke="#18c7ff" stroke-width="2" filter="url(#glow)"/>
+        <path d="M68 72 V194 M68 72 L51 98 M68 72 L85 98" stroke="#ff4fa3" stroke-width="4" fill="none" filter="url(#glow)"/><circle cx="68" cy="72" r="6" fill="#ffcf40"/>
+        <g fill="#9fb3ce" font-family="Consolas" font-size="12"><text x="255" y="48">IMAGE_PLANE</text><text x="105" y="120">O_c</text><text x="37" y="216">P_w</text></g>
+      </svg>
+    </div><div class="body"><span class="badge">C · 深色工程蓝图</span><h2>酷、专业、偏硬件与算法文档</h2><p>深色网格、霓虹数据线、等宽标签。技术感最强，但长文阅读和打印不占优势。</p></div>
+  </section>
+</div>
+<p class="hint">点击卡片选择；也可以回到对话中直接告诉我 A / B / C，以及你想混搭的部分。</p>
+</main>
+<script>function pick(el){document.querySelectorAll('.card').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');localStorage.setItem('camera-style',el.dataset.choice);}</script>
+</body></html>
