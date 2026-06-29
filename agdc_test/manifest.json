@@ -1,0 +1,115 @@
+{
+  "description": "AGDC Mesh Table & Golden Reference — Image1.tif",
+  "calibration": {
+    "source": "d:\\Clone\\CameraCalibration\\相机标定课程\\第一章 标定基础知识 code & data\\matlab_sample\\calib_example\\Calib_Results.m",
+    "fc": [
+      657.4461078692183,
+      657.8766602560904
+    ],
+    "cc": [
+      303.1853197952834,
+      242.70848116387566
+    ],
+    "kc": [
+      -0.255414841834118,
+      0.124449907410458,
+      -0.000216975662453,
+      7.4351611502e-05,
+      0.0
+    ],
+    "image_size": [
+      640,
+      480
+    ]
+  },
+  "input_image": "d:\\Clone\\CameraCalibration\\相机标定课程\\第一章 标定基础知识 code & data\\matlab_sample\\calib_example\\Image1.tif",
+  "reference_image": "d:\\Clone\\CameraCalibration\\相机标定课程\\第一章 标定基础知识 code & data\\matlab_sample\\calib_example\\Image_rect1.tif",
+  "format_spec": {
+    "mesh_node_format": "36-bit = {v[17:0], u[17:0]}",
+    "coordinate_format": "u12.5 signed (12-bit integer + 5-bit fractional)",
+    "sram_addressing": "addr = iy * (mesh_cols+1) + ix, row-major",
+    "frac_bits": 5,
+    "frac_scale": 32,
+    "lsb_value": 0.03125
+  },
+  "mesh_tables": {
+    "16x12": {
+      "grid_cols": 17,
+      "grid_rows": 13,
+      "num_nodes": 221,
+      "frac_bits": 5,
+      "u_range_float": [
+        14.793590246248982,
+        619.5043967660633
+      ],
+      "v_range_float": [
+        7.853769542609598,
+        471.61468174752207
+      ],
+      "u_range_fixed": [
+        473,
+        19824
+      ],
+      "v_range_fixed": [
+        251,
+        15092
+      ],
+      "quant_error_u_max": 0.015462378594293114,
+      "quant_error_v_max": 0.015593877205162698,
+      "hex_file": "d:\\Clone\\CameraCalibration\\agdc_test\\agdc_mesh_16x12_36bit.hex",
+      "bin64_file": "d:\\Clone\\CameraCalibration\\agdc_test\\agdc_mesh_16x12_36bit_in_u64.bin",
+      "uv_interleaved_file": "d:\\Clone\\CameraCalibration\\agdc_test\\agdc_mesh_16x12_uv_fixed.bin",
+      "c_header": "d:\\Clone\\CameraCalibration\\agdc_test\\agdc_mesh_16x12.h"
+    },
+    "32x24": {
+      "grid_cols": 33,
+      "grid_rows": 25,
+      "num_nodes": 825,
+      "frac_bits": 5,
+      "u_range_float": [
+        14.793590246248982,
+        619.5043967660633
+      ],
+      "v_range_float": [
+        7.821061170633186,
+        471.6469664154606
+      ],
+      "u_range_fixed": [
+        473,
+        19824
+      ],
+      "v_range_fixed": [
+        250,
+        15093
+      ],
+      "quant_error_u_max": 0.015617725716708719,
+      "quant_error_v_max": 0.015593877205162698,
+      "hex_file": "d:\\Clone\\CameraCalibration\\agdc_test\\agdc_mesh_32x24_36bit.hex",
+      "bin64_file": "d:\\Clone\\CameraCalibration\\agdc_test\\agdc_mesh_32x24_36bit_in_u64.bin",
+      "uv_interleaved_file": "d:\\Clone\\CameraCalibration\\agdc_test\\agdc_mesh_32x24_uv_fixed.bin",
+      "c_header": "d:\\Clone\\CameraCalibration\\agdc_test\\agdc_mesh_32x24.h"
+    }
+  },
+  "yuv_inputs": {
+    "nv12_y": "d:\\Clone\\CameraCalibration\\agdc_test\\distorted_nv12_y.bin",
+    "nv12_uv": "d:\\Clone\\CameraCalibration\\agdc_test\\distorted_nv12_uv.bin",
+    "nv16_y": "d:\\Clone\\CameraCalibration\\agdc_test\\distorted_nv16_y.bin",
+    "nv16_uv": "d:\\Clone\\CameraCalibration\\agdc_test\\distorted_nv16_uv.bin",
+    "yuyv": "d:\\Clone\\CameraCalibration\\agdc_test\\distorted_yuyv.bin"
+  },
+  "golden_reference": {
+    "nv12_y": "d:\\Clone\\CameraCalibration\\agdc_test\\golden_nv12_y.bin",
+    "nv12_uv": "d:\\Clone\\CameraCalibration\\agdc_test\\golden_nv12_uv.bin",
+    "nv16_y": "d:\\Clone\\CameraCalibration\\agdc_test\\golden_nv16_y.bin",
+    "nv16_uv": "d:\\Clone\\CameraCalibration\\agdc_test\\golden_nv16_uv.bin",
+    "yuyv": "d:\\Clone\\CameraCalibration\\agdc_test\\golden_yuyv.bin",
+    "y_plane": "d:\\Clone\\CameraCalibration\\agdc_test\\golden_y_plane.bin",
+    "u_plane": "d:\\Clone\\CameraCalibration\\agdc_test\\golden_u_plane.bin",
+    "v_plane": "d:\\Clone\\CameraCalibration\\agdc_test\\golden_v_plane.bin"
+  },
+  "validation": {
+    "analytic_vs_matlab_nn_mae": 1.9707520008087158,
+    "analytic_vs_matlab_bi_mae": 0.08386718481779099,
+    "analytic_vs_matlab_bi_maxerr": 8.0
+  }
+}
