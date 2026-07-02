@@ -31,7 +31,11 @@ from pathlib import Path
 BASE_DIR = Path(r"d:\Clone\CameraCalibration")
 CALIB_DIR = Path(r"d:\Clone\CameraCalibration\相机标定课程\第一章 标定基础知识 code & data\matlab_sample\calib_example")
 OUT_DIR = BASE_DIR / "agdc_test"
-OUT_DIR.mkdir(exist_ok=True)
+for d in ["source", "mesh/16x12", "mesh/32x24",
+          "input/nv12", "input/nv16", "input/yuyv",
+          "golden/nv12", "golden/nv16", "golden/yuyv",
+          "verify"]:
+    (OUT_DIR / d).mkdir(parents=True, exist_ok=True)
 
 IMG_DISTORTED_PATH = CALIB_DIR / "Image1.tif"
 IMG_RECTIFIED_PATH = CALIB_DIR / "Image_rect1.tif"
@@ -233,9 +237,8 @@ Y_dist, U_dist, V_dist = rgb_to_yuv_bt601(img_dist)
 
 # NV12
 Y_nv12, UV_nv12 = pack_nv12(Y_dist, U_dist, V_dist)
-nv12_path_y   = OUT_DIR / "distorted_nv12_y.bin"
-nv12_path_uv  = OUT_DIR / "distorted_nv12_uv.bin"
-nv12_path_meta = OUT_DIR / "distorted_nv12.json"
+nv12_path_y   = OUT_DIR / "input/nv12/distorted_nv12_y.bin"
+nv12_path_uv  = OUT_DIR / "input/nv12/distorted_nv12_uv.bin"
 Y_nv12.tofile(str(nv12_path_y))
 UV_nv12.tofile(str(nv12_path_uv))
 print(f"\nYUV420SP (NV12):")
@@ -244,8 +247,8 @@ print(f"  UV plane: {nv12_path_uv}  ({UV_nv12.size} bytes, {UV_nv12.shape})")
 
 # NV16
 Y_nv16, UV_nv16 = pack_nv16(Y_dist, U_dist, V_dist)
-nv16_path_y   = OUT_DIR / "distorted_nv16_y.bin"
-nv16_path_uv  = OUT_DIR / "distorted_nv16_uv.bin"
+nv16_path_y   = OUT_DIR / "input/nv16/distorted_nv16_y.bin"
+nv16_path_uv  = OUT_DIR / "input/nv16/distorted_nv16_uv.bin"
 Y_nv16.tofile(str(nv16_path_y))
 UV_nv16.tofile(str(nv16_path_uv))
 print(f"\nYUV422SP (NV16):")
@@ -254,7 +257,7 @@ print(f"  UV plane: {nv16_path_uv}  ({UV_nv16.size} bytes, {UV_nv16.shape})")
 
 # YUYV
 yuyv_data = pack_yuyv(Y_dist, U_dist, V_dist)
-yuyv_path = OUT_DIR / "distorted_yuyv.bin"
+yuyv_path = OUT_DIR / "input/yuyv/distorted_yuyv.bin"
 yuyv_data.tofile(str(yuyv_path))
 print(f"\nYUV422I (YUYV):")
 print(f"  YUYV packed: {yuyv_path}  ({yuyv_data.size} bytes, {yuyv_data.shape})")
@@ -268,8 +271,8 @@ Y_rect, U_rect, V_rect = rgb_to_yuv_bt601(img_rect)
 
 # NV12
 Yr_nv12, UVr_nv12 = pack_nv12(Y_rect, U_rect, V_rect)
-gr_nv12_y   = OUT_DIR / "golden_nv12_y.bin"
-gr_nv12_uv  = OUT_DIR / "golden_nv12_uv.bin"
+gr_nv12_y   = OUT_DIR / "golden/nv12/golden_nv12_y.bin"
+gr_nv12_uv  = OUT_DIR / "golden/nv12/golden_nv12_uv.bin"
 Yr_nv12.tofile(str(gr_nv12_y))
 UVr_nv12.tofile(str(gr_nv12_uv))
 print(f"\nYUV420SP (NV12):")
@@ -278,8 +281,8 @@ print(f"  UV plane: {gr_nv12_uv}  ({UVr_nv12.size} bytes, {UVr_nv12.shape})")
 
 # NV16
 Yr_nv16, UVr_nv16 = pack_nv16(Y_rect, U_rect, V_rect)
-gr_nv16_y   = OUT_DIR / "golden_nv16_y.bin"
-gr_nv16_uv  = OUT_DIR / "golden_nv16_uv.bin"
+gr_nv16_y   = OUT_DIR / "golden/nv16/golden_nv16_y.bin"
+gr_nv16_uv  = OUT_DIR / "golden/nv16/golden_nv16_uv.bin"
 Yr_nv16.tofile(str(gr_nv16_y))
 UVr_nv16.tofile(str(gr_nv16_uv))
 print(f"\nYUV422SP (NV16):")
@@ -288,19 +291,19 @@ print(f"  UV plane: {gr_nv16_uv}  ({UVr_nv16.size} bytes, {UVr_nv16.shape})")
 
 # YUYV
 yuyv_rect = pack_yuyv(Y_rect, U_rect, V_rect)
-gr_yuyv_path = OUT_DIR / "golden_yuyv.bin"
+gr_yuyv_path = OUT_DIR / "golden/yuyv/golden_yuyv.bin"
 yuyv_rect.tofile(str(gr_yuyv_path))
 print(f"\nYUV422I (YUYV):")
 print(f"  YUYV packed: {gr_yuyv_path}  ({yuyv_rect.size} bytes, {yuyv_rect.shape})")
 
 # 保存完整平面供参考 (Y, U, V 独立)
-Y_rect.tofile(str(OUT_DIR / "golden_y_plane.bin"))
-U_rect.tofile(str(OUT_DIR / "golden_u_plane.bin"))
-V_rect.tofile(str(OUT_DIR / "golden_v_plane.bin"))
+Y_rect.tofile(str(OUT_DIR / "golden/golden_y_plane.bin"))
+U_rect.tofile(str(OUT_DIR / "golden/golden_u_plane.bin"))
+V_rect.tofile(str(OUT_DIR / "golden/golden_v_plane.bin"))
 print(f"\n独立 Y/U/V 平面 (逐像素参考):")
-print(f"  Y: {OUT_DIR / 'golden_y_plane.bin'}  ({Y_rect.size} bytes)")
-print(f"  U: {OUT_DIR / 'golden_u_plane.bin'}  ({U_rect.size} bytes)")
-print(f"  V: {OUT_DIR / 'golden_v_plane.bin'}  ({V_rect.size} bytes)")
+print(f"  Y: {OUT_DIR / 'golden/golden_y_plane.bin'}  ({Y_rect.size} bytes)")
+print(f"  U: {OUT_DIR / 'golden/golden_u_plane.bin'}  ({U_rect.size} bytes)")
+print(f"  V: {OUT_DIR / 'golden/golden_v_plane.bin'}  ({V_rect.size} bytes)")
 
 # ============================================================
 # 5. 生成 AGDC Mesh Table (36-bit 格式)
@@ -386,7 +389,7 @@ for mesh_name, mesh_cols, mesh_rows in MESH_CONFIGS:
                                                   mesh_v_fixed[iy, ix])
 
     # ---- 输出格式 A: SRAM hex 文件 (每行一个 36-bit 值 → 64-bit hex) ----
-    hex_path = OUT_DIR / f"agdc_mesh_{mesh_name}_36bit.hex"
+    hex_path = OUT_DIR / "mesh" / mesh_name / f"agdc_mesh_{mesh_name}_36bit.hex"
     with open(str(hex_path), 'w') as f:
         f.write(f"// AGDC Mesh Table: {mesh_name} tiles\n")
         f.write(f"// Nodes: {grid_cols}x{grid_rows} = {num_nodes}\n")
@@ -407,12 +410,12 @@ for mesh_name, mesh_cols, mesh_rows in MESH_CONFIGS:
     print(f"  SRAM hex (含注释): {hex_path}")
 
     # ---- 输出格式 B: 纯二进制 (每节点 8 字节, little-endian 64-bit) ----
-    bin64_path = OUT_DIR / f"agdc_mesh_{mesh_name}_36bit_in_u64.bin"
+    bin64_path = OUT_DIR / "mesh" / mesh_name / f"agdc_mesh_{mesh_name}_36bit_in_u64.bin"
     mesh_entries.astype(np.uint64).tofile(str(bin64_path))
     print(f"  64-bit LE binary:  {bin64_path}  ({mesh_entries.nbytes} bytes)")
 
     # ---- 输出格式 C: u/v 分离定点表 (int32, 供 C/RTL 仿真直接引用) ----
-    uv_path = OUT_DIR / f"agdc_mesh_{mesh_name}_uv_fixed.bin"
+    uv_path = OUT_DIR / "mesh" / mesh_name / f"agdc_mesh_{mesh_name}_uv_fixed.bin"
     # 交织存储: [u00, v00, u01, v01, ...]
     uv_interleaved = np.empty(num_nodes * 2, dtype=np.int32)
     for iy in range(grid_rows):
@@ -424,7 +427,7 @@ for mesh_name, mesh_cols, mesh_rows in MESH_CONFIGS:
     print(f"  u/v交织 int32:    {uv_path}  ({uv_interleaved.nbytes} bytes)")
 
     # ---- 输出格式 D: C header (定点 + 封装值) ----
-    h_path = OUT_DIR / f"agdc_mesh_{mesh_name}.h"
+    h_path = OUT_DIR / "mesh" / mesh_name / f"agdc_mesh_{mesh_name}.h"
     with open(str(h_path), 'w') as f:
         f.write(f"// AGDC Mesh Table for Image1.tif ({W}x{H})\n")
         f.write(f"// Grid: {mesh_name} tiles ({grid_cols}x{grid_rows} nodes)\n")
@@ -520,15 +523,15 @@ print(f"\n解析法 Bilinear vs MATLAB Image_rect1.tif:")
 print(f"  MAE={np.abs(diff_bi).mean():.4f}, MaxError={np.abs(diff_bi).max():.0f}")
 
 # 保存差异图
-imwrite_unicode(OUT_DIR / "diff_analytic_vs_matlab_nn.png",
+imwrite_unicode(OUT_DIR / "verify/diff_analytic_vs_matlab_nn.png",
                 np.clip(np.abs(diff_nn) * 5, 0, 255).astype(np.uint8))
-imwrite_unicode(OUT_DIR / "diff_analytic_vs_matlab_bi.png",
+imwrite_unicode(OUT_DIR / "verify/diff_analytic_vs_matlab_bi.png",
                 np.clip(np.abs(diff_bi) * 5, 0, 255).astype(np.uint8))
-imwrite_unicode(OUT_DIR / "golden_rectified_analytic_bi.tif", img_rect_analytic_bi)
-imwrite_unicode(OUT_DIR / "golden_rectified_analytic_nn.tif", img_rect_analytic_nn)
+imwrite_unicode(OUT_DIR / "verify/golden_rectified_analytic_bi.tif", img_rect_analytic_bi)
+imwrite_unicode(OUT_DIR / "verify/golden_rectified_analytic_nn.tif", img_rect_analytic_nn)
 
-print(f"\n差异图 (x5): {OUT_DIR / 'diff_analytic_vs_matlab_nn.png'}")
-print(f"差异图 (x5): {OUT_DIR / 'diff_analytic_vs_matlab_bi.png'}")
+print(f"\n差异图 (x5): {OUT_DIR / 'verify/diff_analytic_vs_matlab_nn.png'}")
+print(f"差异图 (x5): {OUT_DIR / 'verify/diff_analytic_vs_matlab_bi.png'}")
 
 # ---- 用 AGDC 网格表 (双线性插值重建) 验证 ----
 print(f"\n{'='*72}")
@@ -578,8 +581,8 @@ for mesh_name, mesh_cols, mesh_rows in MESH_CONFIGS:
     maxe_m = np.abs(diff_mesh).max()
     print(f"  {mesh_name}: MAE={mae_m:.4f}, MaxError={maxe_m:.0f}")
 
-    imwrite_unicode(OUT_DIR / f"reconstructed_mesh_{mesh_name}.tif", out)
-    print(f"    重建图像: {OUT_DIR / f'reconstructed_mesh_{mesh_name}.tif'}")
+    imwrite_unicode(OUT_DIR / "verify" / f"reconstructed_mesh_{mesh_name}.tif", out)
+    print(f"    重建图像: {OUT_DIR / 'verify' / f'reconstructed_mesh_{mesh_name}.tif'}")
 
 # ============================================================
 # 7. 汇总索引文件
@@ -621,9 +624,9 @@ manifest = {
         "nv16_y": str(gr_nv16_y),
         "nv16_uv": str(gr_nv16_uv),
         "yuyv": str(gr_yuyv_path),
-        "y_plane": str(OUT_DIR / "golden_y_plane.bin"),
-        "u_plane": str(OUT_DIR / "golden_u_plane.bin"),
-        "v_plane": str(OUT_DIR / "golden_v_plane.bin"),
+        "y_plane": str(OUT_DIR / "golden/golden_y_plane.bin"),
+        "u_plane": str(OUT_DIR / "golden/golden_u_plane.bin"),
+        "v_plane": str(OUT_DIR / "golden/golden_v_plane.bin"),
     },
     "validation": {
         "analytic_vs_matlab_nn_mae": float(np.abs(diff_nn).mean()),

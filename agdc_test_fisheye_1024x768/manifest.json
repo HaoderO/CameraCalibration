@@ -1,0 +1,88 @@
+{
+  "description": "AGDC Mesh Table & Golden Reference — VMRImage1 1024x768 (Fisheye)",
+  "model": "Scaramuzza Omnidirectional Camera Model",
+  "scale": 1.0,
+  "base_calibration": "d:\\Clone\\CameraCalibration\\相机标定课程\\第七章\\Scaramuzza_OCamCalib_v3.0_win\\get_ocam_model.m",
+  "parameters": {
+    "ss": [
+      -140.5116937602191,
+      0.0,
+      0.0002716608082380784,
+      5.257341861497706e-06,
+      -1.067888507955045e-09
+    ],
+    "xc": 512.0,
+    "yc": 384.0,
+    "c": 1.0,
+    "d": 0.0,
+    "e": 0.0,
+    "calib_radius": 498.0,
+    "pol_coeffs_fitted": [
+      287.9787047058073,
+      212.5090326647143,
+      10.834209055462907,
+      26.731386170911875,
+      39.715620052463805,
+      12.424717666265153
+    ],
+    "theta_order": 5,
+    "theta_max_deg": 45.70972966186525
+  },
+  "image": {
+    "input": "d:\\Clone\\CameraCalibration\\相机标定课程\\第七章\\Scaramuzza_OCamCalib_v3.0_win\\VMRImage1.jpg",
+    "input_size": [
+      1024,
+      768
+    ],
+    "output_size": [
+      640,
+      480
+    ],
+    "virtual_fc": 4.0
+  },
+  "hardware_constraints": {
+    "per_row_v_in_span_max": 381.10739001944216,
+    "per_row_v_in_span_mean": 363.42703045479516,
+    "line_buf_depth_typical": 70,
+    "online_mode_feasible": false,
+    "recommendation": "离线模式"
+  },
+  "format_spec": {
+    "mesh_node_format": "36-bit = {v[17:0], u[17:0]}",
+    "coordinate_format": "u12.5 signed",
+    "sram_addressing": "addr = iy * (mesh_cols+1) + ix",
+    "frac_bits": 5
+  },
+  "mesh_tables": {
+    "16x12": {
+      "grid_cols": 17,
+      "grid_rows": 13,
+      "num_nodes": 221,
+      "tile_w": 40,
+      "tile_h": 40,
+      "u_range_float": [
+        346.7914519313519,
+        676.8178365635722
+      ],
+      "v_range_float": [
+        193.3167792885249,
+        574.4241693079671
+      ]
+    },
+    "32x24": {
+      "grid_cols": 33,
+      "grid_rows": 25,
+      "num_nodes": 825,
+      "tile_w": 20,
+      "tile_h": 20,
+      "u_range_float": [
+        346.7914519313519,
+        676.8178365635722
+      ],
+      "v_range_float": [
+        193.3167792885249,
+        574.4241693079671
+      ]
+    }
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "description": "AGDC Stereo Mesh Table & Golden Reference — Online Mode (Side-by-Side)",
+  "mode": "stereo_online",
+  "input": {
+    "left_image": "d:\\Clone\\CameraCalibration\\相机标定课程\\第一章 标定基础知识 code & data\\matlab_sample\\stereo_example\\left01.jpg",
+    "right_image": "d:\\Clone\\CameraCalibration\\相机标定课程\\第一章 标定基础知识 code & data\\matlab_sample\\stereo_example\\right01.jpg",
+    "combined_image": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\source\\combined_input.jpg",
+    "image_size_per_eye": [
+      640,
+      480
+    ],
+    "combined_size": [
+      1280,
+      480
+    ]
+  },
+  "calibration": {
+    "source": {
+      "intrinsics": "d:\\Clone\\CameraCalibration\\相机标定课程\\第一章 标定基础知识 code & data\\calib\\data\\intrinsics.yml",
+      "extrinsics": "d:\\Clone\\CameraCalibration\\相机标定课程\\第一章 标定基础知识 code & data\\calib\\data\\extrinsics.yml"
+    },
+    "left": {
+      "camera_matrix": [
+        [
+          533.9879524791104,
+          0.0,
+          328.3864745276673
+        ],
+        [
+          0.0,
+          528.7108209644763,
+          236.84272829022564
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "distortion": [
+        -0.2589659904044187,
+        -0.12618381509733806,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "right": {
+      "camera_matrix": [
+        [
+          533.9879524791104,
+          0.0,
+          313.77033179722014
+        ],
+        [
+          0.0,
+          528.7108209644763,
+          241.87045532011228
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "distortion": [
+        -0.2629622116369079,
+        -0.012154510248729584,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "stereo": {
+      "R": [
+        [
+          0.9999714958200788,
+          0.004821009910581758,
+          0.005810801218095874
+        ],
+        [
+          -0.004886665421806769,
+          0.9999237806415875,
+          0.011338139551511776
+        ],
+        [
+          -0.005755697039409743,
+          -0.011366211808527505,
+          0.9999188372966649
+        ]
+      ],
+      "T": [
+        -3.3427086938262143,
+        0.04682592130010129,
+        0.003652340740169322
+      ],
+      "baseline": 3.3430386504316463,
+      "rectified_focal_length": 439.6485937471564,
+      "rectified_principal_point": [
+        319.3243713378906,
+        239.4536361694336
+      ],
+      "Q_matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          -319.3243713378906
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -239.4536361694336
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          439.6485937471564
+        ],
+        [
+          0.0,
+          0.0,
+          0.2991290572936936,
+          0.0
+        ]
+      ]
+    }
+  },
+  "format_spec": {
+    "mesh_node_format": "36-bit = {v[17:0], u[17:0]}",
+    "coordinate_format": "u12.5 signed (12-bit integer + 5-bit fractional)",
+    "sram_addressing": "addr = iy * (mesh_cols+1) + ix, row-major",
+    "frac_bits": 5,
+    "frac_scale": 32,
+    "lsb_value": 0.03125
+  },
+  "mesh_tables": {
+    "16x12": {
+      "grid_cols": 17,
+      "grid_rows": 13,
+      "num_nodes": 221,
+      "frac_bits": 5,
+      "u_range_float": [
+        -32.25100326538086,
+        1297.569091796875
+      ],
+      "v_range_float": [
+        -31.601436614990234,
+        511.58001708984375
+      ],
+      "u_range_fixed": [
+        -1032,
+        41522
+      ],
+      "v_range_fixed": [
+        -1011,
+        16371
+      ],
+      "quant_error_u_max": 0.015625,
+      "quant_error_v_max": 0.015625,
+      "hex_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\16x12\\agdc_mesh_16x12_36bit.hex",
+      "bin64_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\16x12\\agdc_mesh_16x12_36bit_in_u64.bin",
+      "uv_interleaved_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\16x12\\agdc_mesh_16x12_uv_fixed.bin",
+      "c_header": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\16x12\\agdc_mesh_16x12.h"
+    },
+    "32x24": {
+      "grid_cols": 33,
+      "grid_rows": 25,
+      "num_nodes": 825,
+      "frac_bits": 5,
+      "u_range_float": [
+        -32.25100326538086,
+        1297.569091796875
+      ],
+      "v_range_float": [
+        -31.601436614990234,
+        511.6490783691406
+      ],
+      "u_range_fixed": [
+        -1032,
+        41522
+      ],
+      "v_range_fixed": [
+        -1011,
+        16373
+      ],
+      "quant_error_u_max": 0.015625,
+      "quant_error_v_max": 0.015625,
+      "hex_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\32x24\\agdc_mesh_32x24_36bit.hex",
+      "bin64_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\32x24\\agdc_mesh_32x24_36bit_in_u64.bin",
+      "uv_interleaved_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\32x24\\agdc_mesh_32x24_uv_fixed.bin",
+      "c_header": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\32x24\\agdc_mesh_32x24.h"
+    },
+    "64x48": {
+      "grid_cols": 65,
+      "grid_rows": 49,
+      "num_nodes": 3185,
+      "frac_bits": 5,
+      "u_range_float": [
+        -32.25100326538086,
+        1297.576416015625
+      ],
+      "v_range_float": [
+        -31.633466720581055,
+        511.7482604980469
+      ],
+      "u_range_fixed": [
+        -1032,
+        41522
+      ],
+      "v_range_fixed": [
+        -1012,
+        16376
+      ],
+      "quant_error_u_max": 0.015625,
+      "quant_error_v_max": 0.015625,
+      "hex_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\64x48\\agdc_mesh_64x48_36bit.hex",
+      "bin64_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\64x48\\agdc_mesh_64x48_36bit_in_u64.bin",
+      "uv_interleaved_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\64x48\\agdc_mesh_64x48_uv_fixed.bin",
+      "c_header": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\mesh\\64x48\\agdc_mesh_64x48.h"
+    }
+  },
+  "yuv_inputs": {
+    "nv12_y": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\input\\nv12\\distorted_nv12_y.bin",
+    "nv12_uv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\input\\nv12\\distorted_nv12_uv.bin",
+    "nv16_y": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\input\\nv16\\distorted_nv16_y.bin",
+    "nv16_uv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\input\\nv16\\distorted_nv16_uv.bin",
+    "yuyv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\input\\yuyv\\distorted_yuyv.bin"
+  },
+  "golden_reference": {
+    "nv12_y": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\golden\\nv12\\golden_nv12_y.bin",
+    "nv12_uv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\golden\\nv12\\golden_nv12_uv.bin",
+    "nv16_y": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\golden\\nv16\\golden_nv16_y.bin",
+    "nv16_uv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\golden\\nv16\\golden_nv16_uv.bin",
+    "yuyv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\golden\\yuyv\\golden_yuyv.bin",
+    "y_plane": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\golden\\golden_y_plane.bin",
+    "u_plane": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\golden\\golden_u_plane.bin",
+    "v_plane": "d:\\Clone\\CameraCalibration\\agdc_test_stereo\\golden\\golden_v_plane.bin"
+  },
+  "validation": {
+    "epipolar_alignment_error_mean_px": 10.899551391601562,
+    "epipolar_alignment_error_max_px": 26.791702270507812
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "description": "AGDC Stereo Fusion Mesh Table — Disparity-Driven Hard Split",
+  "mode": "stereo_fusion_hard_split",
+  "version": 6,
+  "changelog": [
+    "v6: 视差驱动硬分界 (无 blending) — 分界位于最小视差列",
+    "v6: SPLIT_X=180 (视差37px vs 几何中心320的67px)",
+    "v5: OOB 按相机半区检测，洋红色标记"
+  ],
+  "fusion": {
+    "type": "disparity_driven_hard_split",
+    "split_x": 180,
+    "disparity_at_split": 37.142303466796875,
+    "principle": "在搜索范围 [160, 480) 内找到平均视差最小的列作为硬分界。x=180 处视差=37.1px，仅为几何中心 x=320 处视差 (67.4px) 的 55%。硬分界左侧全左路、右侧全右路，无 blending。"
+  },
+  "input": {
+    "left_image": "d:\\Clone\\CameraCalibration\\相机标定课程\\第一章 标定基础知识 code & data\\matlab_sample\\stereo_example\\left01.jpg",
+    "right_image": "d:\\Clone\\CameraCalibration\\相机标定课程\\第一章 标定基础知识 code & data\\matlab_sample\\stereo_example\\right01.jpg",
+    "combined_image": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\source\\combined_input.jpg",
+    "image_size_per_eye": [
+      640,
+      480
+    ],
+    "combined_size": [
+      1280,
+      480
+    ]
+  },
+  "output": {
+    "size": [
+      680,
+      480
+    ],
+    "valid_pixel_pct": 89.32781862745098,
+    "oob_pixel_pct": 10.67218137254902
+  },
+  "calibration": {
+    "left": {
+      "camera_matrix": [
+        [
+          533.9879524791104,
+          0.0,
+          328.3864745276673
+        ],
+        [
+          0.0,
+          528.7108209644763,
+          236.84272829022564
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "distortion_k1k2": [
+        -0.2589659904044187,
+        -0.12618381509733806
+      ]
+    },
+    "right": {
+      "camera_matrix": [
+        [
+          533.9879524791104,
+          0.0,
+          313.77033179722014
+        ],
+        [
+          0.0,
+          528.7108209644763,
+          241.87045532011228
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "distortion_k1k2": [
+        -0.2629622116369079,
+        -0.012154510248729584
+      ]
+    },
+    "stereo": {
+      "baseline": 3.3430386504316463,
+      "rectified_focal_length": 439.6485937471564,
+      "rectified_principal_point": [
+        319.3243713378906,
+        239.4536361694336
+      ]
+    }
+  },
+  "format_spec": {
+    "mesh_node_format": "36-bit = {v[17:0], u[17:0]}",
+    "coordinate_format": "u12.5 signed",
+    "sram_addressing": "addr = iy * (mesh_cols+1) + ix",
+    "frac_bits": 5
+  },
+  "mesh_tables": {
+    "64x48": {
+      "grid_cols": 65,
+      "grid_rows": 49,
+      "num_nodes": 3185,
+      "frac_bits": 5,
+      "split_x": 180,
+      "tile_w": 10.625,
+      "tile_h": 10.0,
+      "cross_camera_tiles": 48,
+      "u_range_float": [
+        -32.25100326538086,
+        1297.576416015625
+      ],
+      "v_range_float": [
+        -26.946266174316406,
+        511.7437744140625
+      ],
+      "u_range_fixed": [
+        -1032,
+        41522
+      ],
+      "v_range_fixed": [
+        -862,
+        16376
+      ],
+      "quant_error_u_max": 0.015625,
+      "quant_error_v_max": 0.015625,
+      "nodes_left": 833,
+      "nodes_right": 2352,
+      "hex_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\mesh\\64x48\\agdc_mesh_64x48_36bit.hex",
+      "bin64_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\mesh\\64x48\\agdc_mesh_64x48_36bit_in_u64.bin",
+      "uv_interleaved_file": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\mesh\\64x48\\agdc_mesh_64x48_uv_fixed.bin",
+      "c_header": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\mesh\\64x48\\agdc_mesh_64x48.h"
+    }
+  },
+  "yuv_inputs": {
+    "nv12_y": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\input\\nv12\\distorted_nv12_y.bin",
+    "nv12_uv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\input\\nv12\\distorted_nv12_uv.bin",
+    "nv16_y": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\input\\nv16\\distorted_nv16_y.bin",
+    "nv16_uv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\input\\nv16\\distorted_nv16_uv.bin",
+    "yuyv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\input\\yuyv\\distorted_yuyv.bin"
+  },
+  "golden_reference": {
+    "nv12_y": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\golden\\nv12\\golden_nv12_y.bin",
+    "nv12_uv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\golden\\nv12\\golden_nv12_uv.bin",
+    "nv16_y": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\golden\\nv16\\golden_nv16_y.bin",
+    "nv16_uv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\golden\\nv16\\golden_nv16_uv.bin",
+    "yuyv": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\golden\\yuyv\\golden_yuyv.bin",
+    "y_plane": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\golden\\golden_y_plane.bin",
+    "u_plane": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\golden\\golden_u_plane.bin",
+    "v_plane": "d:\\Clone\\CameraCalibration\\agdc_test_stereo_fusion\\golden\\golden_v_plane.bin"
+  },
+  "validation": {
+    "split_x": 180,
+    "disparity_at_split": 37.142303466796875,
+    "disparity_mean": 68.18974304199219,
+    "left_half_mae": 0.0,
+    "right_half_mae": 10.508827514745736
+  }
+}

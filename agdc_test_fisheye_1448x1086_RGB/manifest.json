@@ -1,0 +1,91 @@
+{
+  "description": "AGDC Fisheye — VMRImage1 1448x1086 RGB888",
+  "model": "Scaramuzza Omnidirectional Camera Model",
+  "scale": 1.4140625,
+  "source_image": "d:\\Clone\\CameraCalibration\\agdc_test_fisheye_1024x768\\source\\VMRImage1_1024x768_RGB888.png",
+  "note": "RGB888 color image, 16B-aligned stride, NV12 hex format",
+  "parameters": {
+    "ss": [
+      -198.6923169578098,
+      0.0,
+      0.00019211372074295048,
+      2.6292325954268313e-06,
+      -3.776766169441361e-10
+    ],
+    "xc": 724.0,
+    "yc": 543.0,
+    "c": 1.0,
+    "d": 0.0,
+    "e": 0.0,
+    "calib_radius": 704.203125,
+    "pol_coeffs_fitted": [
+      407.2198871230557,
+      300.50105400244723,
+      15.320248742490676,
+      37.79985075730496,
+      56.16036898043734,
+      17.569327324953377
+    ],
+    "theta_max_deg": 45.709729661865246
+  },
+  "image": {
+    "input_size": [
+      1448,
+      1086
+    ],
+    "output_size": [
+      912,
+      684
+    ],
+    "src_stride": 1456,
+    "dst_stride": 912,
+    "virtual_fc": 4.0
+  },
+  "hardware_constraints": {
+    "per_row_v_in_span_max": 539.0191066098635,
+    "per_row_v_in_span_mean": 514.0257649577095,
+    "line_buf_depth_typical": 70,
+    "online_mode_feasible": false
+  },
+  "format_spec": {
+    "nv12": "128-bit LSB-first hex, 32 chars/line, Y/UV separate files",
+    "nv12_y_stride": 1456,
+    "nv12_uv_stride": 1456,
+    "mesh_node_format": "36-bit = {v[17:0], u[17:0]}, 9-char hex/line",
+    "mesh_addressing": "addr = iy * (mesh_cols+1) + ix (row-major)",
+    "coordinate_format": "u12.5 signed, LSB-first byte order",
+    "frac_bits": 5
+  },
+  "mesh_tables": {
+    "16x12": {
+      "grid_cols": 17,
+      "grid_rows": 13,
+      "num_nodes": 221,
+      "tile_w": 57,
+      "tile_h": 57,
+      "u_range_float": [
+        490.38478749667695,
+        957.2278108503533
+      ],
+      "v_range_float": [
+        273.3620082126795,
+        812.3811148225429
+      ]
+    },
+    "32x24": {
+      "grid_cols": 33,
+      "grid_rows": 25,
+      "num_nodes": 825,
+      "tile_w": 28,
+      "tile_h": 28,
+      "u_range_float": [
+        490.38478749667695,
+        957.2278108503533
+      ],
+      "v_range_float": [
+        273.3620082126795,
+        812.3811148225429
+      ]
+    }
+  }
+}
